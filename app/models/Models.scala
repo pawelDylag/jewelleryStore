@@ -1,3 +1,5 @@
 package models
 
-case class Product(name: String, description: String, price: Int)
+case class Product(id: Int, categoryId: Int, name: String, description: String, price: Int)
+
+case class Category(id: Int, name: String, description: String)

@@ -25,18 +25,23 @@ class ProductDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvide
 
   def insert(product: Product): Future[Unit] = db.run(Products += product).map { _ => () }
 
-  def delete(name: String): Future[Unit] = db.run(Products.filter(_.name === name).delete).map(_ => ())
+  def delete(id: Int): Future[Unit] = db.run(Products.filter(_.id === id).delete).map(_ => ())
 
-  def findById(name: String): Future[Option[Product]] = db.run(Products.filter(_.name === name).result.headOption)
+  def findById(id: Int): Future[Option[Product]] = db.run(Products.filter(_.id === id).result.headOption)
 
-  def update(name: String, product: Product): Future[Unit] = {
-    val productToUpdate: Product = product.copy(name)
-    db.run(Products.filter(_.name === name).update(productToUpdate)).map(_ => ())
+  def update(id: Int, product: Product): Future[Unit] = {
+    val productToUpdate: Product = product.copy(id)
+    db.run(Products.filter(_.id === id).update(productToUpdate)).map(_ => ())
   }
 
   private class ProductsTable(tag: Tag) extends Table[Product](tag, "PRODUCT") {
 
-    def name = column[String]("NAME", O.PrimaryKey)
+    def id = column[Int]("ID", O.PrimaryKey)
+
+    def categoryId = column[Int]("CATEGORY_ID")
+//    def category = foreignKey("SUP_FK", categoryId, suppliers)(_.id, onUpdate=ForeignKeyAction.Restrict, onDelete=ForeignKeyAction.Cascade)
+
+    def name = column[String]("NAME")
 
     def description = column[String]("DESCRIPTION")
 
