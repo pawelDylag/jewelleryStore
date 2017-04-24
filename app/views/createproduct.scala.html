@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+sample
+
+  @helper.form(action=routes.Application.newproduct) {
+    <label>Name
+      <input type="text" name="name" tabindex="1" required="required"/>
+    </label>
+    <label>Description
+      <input type="text" name="description" tabindex="2" required="required">
+    </label>
+    <label>Price
+      <input type="text" name="price" tabindex="2" required="required">
+    </label>
+    <input type="submit" value="Add" type="button">
+    }
+</body>
+</html>

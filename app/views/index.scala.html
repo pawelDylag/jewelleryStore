@@ -1,0 +1,20 @@
+@(products: Seq[Product])
+
+@main("My first e-commerce in Play framework") {
+    <div>
+    <table>
+    @for(p <- products){
+        <tr>
+            <td>@p.name</td>
+            <td>@p.description</td>
+            <td>@p.price</td>
+            <td><a href="/updateproduct/@p.name">edit</a></td>
+            <td><a href="/deleteproduct/@p.name">delete</a></td>
+        </tr>
+    }
+    </table>
+    </div>
+    <div id="menu">
+        <a href="/createproduct">Add new product</a>
+    </div>
+}
