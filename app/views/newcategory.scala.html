@@ -1,0 +1,12 @@
+@(c: Category)
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+A new category added: @c.id ,@c.name, @c.description
+<a href="@routes.Application.index()">back</a>
+  </body>
+</html>

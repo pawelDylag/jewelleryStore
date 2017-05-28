@@ -5,6 +5,8 @@
     <table>
     @for(p <- products){
         <tr>
+            <td>@p.id</td>
+            <td>@p.categoryId</td>
             <td>@p.name</td>
             <td>@p.description</td>
             <td>@p.price</td>
@@ -15,6 +17,6 @@
     </table>
     </div>
     <div id="menu">
-        <a href="/createproduct">Add new product</a>
+        <a href="/admin/createproduct">Add new product</a>
     </div>
 }

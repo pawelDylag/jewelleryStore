@@ -36,7 +36,7 @@ class ProductDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvide
 
   private class ProductsTable(tag: Tag) extends Table[Product](tag, "PRODUCT") {
 
-    def id = column[Int]("ID", O.PrimaryKey)
+    def id = column[Int]("ID", O.PrimaryKey, O.AutoInc)
 
     def categoryId = column[Int]("CATEGORY_ID")
 //    def category = foreignKey("SUP_FK", categoryId, suppliers)(_.id, onUpdate=ForeignKeyAction.Restrict, onDelete=ForeignKeyAction.Cascade)
@@ -47,7 +47,7 @@ class ProductDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvide
 
     def price = column[Int]("PRICE")
 
-    def * = (name, description, price) <>(Product.tupled, Product.unapply _)
+    def * = (id, categoryId, name, description, price) <>(Product.tupled, Product.unapply _)
   }
 
 

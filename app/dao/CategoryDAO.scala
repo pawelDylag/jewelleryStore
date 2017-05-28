@@ -2,6 +2,7 @@ package dao
 
 import javax.inject.Inject
 
+import play.api.libs.concurrent.Execution.Implicits.defaultContext
 import models.{Category}
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import slick.driver.JdbcProfile
@@ -40,7 +41,7 @@ class CategoryDAO @Inject()(protected val dbConfigProvider: DatabaseConfigProvid
 
     def description = column[String]("DESCRIPTION")
 
-    def * = (name, description, id) <>(Category.tupled, Category.unapply _)
+    def * = (id, name, description) <>(Category.tupled, Category.unapply _)
   }
 
 }

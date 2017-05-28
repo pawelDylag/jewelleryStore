@@ -7,9 +7,15 @@
 <body>
 sample
 
-  @helper.form(action=routes.Application.newproduct) {
+  @helper.form(action=routes.Admin.newproduct) {
+    <label>Id
+      <input type="number" name="id" tabindex="1" required="required"/>
+    </label>
+    <label>Category id
+      <input type="number" name="categoryId" tabindex="1" required="required"/>
+    </label>
     <label>Name
-      <input type="text" name="name" tabindex="1" required="required"/>
+      <input type="text" name="name" tabindex="2" required="required">
     </label>
     <label>Description
       <input type="text" name="description" tabindex="2" required="required">

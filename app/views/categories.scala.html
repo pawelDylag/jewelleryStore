@@ -1,0 +1,18 @@
+@(categories: Seq[Category])
+
+@main("All available categories") {
+    <div>
+    <table>
+    @for(c <- categories){
+        <tr>
+            <td>@c.id<td>
+            <td>@c.name<td>
+            <td>@c.description<td>
+        </tr>
+    }
+    </table>
+    </div>
+    <div id="menu">
+        <a href="/createcategory">Add new category</a>
+    </div>
+}
